@@ -1,0 +1,5 @@
+crear dentro de config un archivo llamado settings.py
+y poner dentro estas variables:
+USERNAME = "user_ig"
+PASSWORD = "password_ig"
+MAX_POSTS = 10
