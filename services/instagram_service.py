@@ -2,9 +2,10 @@ import instaloader
 import http.cookiejar
 from models.post_model import Post
 
+
 class InstagramService:
 
-    MAX_POSTS = 10  #numero de posts o publicaciones a exportar
+    MAX_POSTS = 10  # numero de posts
 
     def __init__(self):
         self.loader = instaloader.Instaloader()
@@ -26,7 +27,12 @@ class InstagramService:
 
     def get_posts(self, username):
         try:
-            profile = instaloader.Profile.from_username(self.loader.context, username)
+            print(f"Buscando usuario: {username}")
+
+            profile = instaloader.Profile.from_username(
+                self.loader.context,
+                username
+            )
 
             posts_data = []
             count = 0
@@ -48,6 +54,14 @@ class InstagramService:
 
             return posts_data
 
+        except instaloader.exceptions.ProfileNotExistsException:
+            print("El usuario no existe")
+            return []
+
+        except instaloader.exceptions.ConnectionException:
+            print("Instagram bloqueó la petición (403)")
+            return []
+
         except Exception as e:
-            print("Error obteniendo posts:", e)
+            print("Error general:", e)
             return []
