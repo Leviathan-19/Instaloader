@@ -8,7 +8,7 @@ def main():
 
     print("Iniciando sesión...")
     service.login_with_cookies()
-    print(self.loader.context.is_logged_in)
+    print(service.loader.context.is_logged_in)
     print("Obteniendo datos...")
     posts = service.get_posts(username)
 
