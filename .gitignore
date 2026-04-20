@@ -1,1 +1,7 @@
 config/settings.py
+cookies.txt
+
+config/__pycache__
+services/__pycache__
+models/__pycache__
+utils/__pycache__
